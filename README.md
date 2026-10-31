@@ -1,17 +1,26 @@
-# Avell A50i RGB Keyboard (GNOME)
+<div align="center">
 
-Control solid color and brightness of the Avell A50i RGB keyboard on Linux.
+<img src="docs/banner.svg" alt="Avell A50i keyboard lit in a rainbow of colors" width="920">
 
-The A50i exposes **Clevo WMI** (`ABBC0F6D…`), not an ITE USB controller. This project:
+<br>
 
-1. Installs a patched `tuxedo-drivers` kernel module (Avell DMI allow-list)
-2. Provides a GNOME Shell 48 extension that writes `/sys/class/leds/rgb:kbd_backlight*`
+<img alt="GNOME Shell 48 or newer" src="https://img.shields.io/badge/GNOME_Shell-48+-3584e4?style=flat-square&logo=gnome&logoColor=white">
+<img alt="Debian and Ubuntu" src="https://img.shields.io/badge/Debian_%2F_Ubuntu-ready-A81D33?style=flat-square&logo=debian&logoColor=white">
+<img alt="Clevo WMI backlight" src="https://img.shields.io/badge/Clevo_WMI-ABBC0F6D-7c5cff?style=flat-square">
+
+<br>
+
+Control solid color, brightness, blink, and music sync on the Avell A50i RGB keyboard from GNOME.
+
+</div>
+
+The A50i exposes **Clevo WMI** (`ABBC0F6D…`), not an ITE USB controller. This project installs a patched `tuxedo-drivers` module (Avell DMI allow-list) and a GNOME Shell extension that writes `/sys/class/leds/rgb:kbd_backlight*`.
 
 ## Requirements
 
-- Debian/Ubuntu with GNOME Shell 48+
+- Debian or Ubuntu with GNOME Shell 48+
 - `dkms`, `linux-headers-$(uname -r)`, `build-essential`, `git`, `mokutil`
-- Secure Boot: a one-time MOK enrollment reboot (handled by the installer)
+- Secure Boot: one reboot to enroll a MOK key (the installer starts this)
 
 ## Quick start
 
@@ -31,16 +40,28 @@ sudo ./scripts/install-driver.sh
 # Top bar → keyboard icon → color / brightness / on-off
 ```
 
-## Extension UI
+## Extension
 
-- On/off toggle
-- Brightness slider
-- Color presets + R/G/B sliders
-- Save / remove custom colors (click `+`, right-click to remove)
-- Blink with adjustable rate and fade (soft pulse instead of hard on/off)
-- Smooth color transitions when changing presets / RGB
-- Music sync: aubio tempo beat tracking + fixed palette colors (PipeWire/Pulse via `parec`; needs `python3-aubio`)
-- Restores last color/brightness on login (GSettings)
+<table>
+<tr>
+<td width="340" valign="top">
+<img src="docs/menu.svg" alt="Illustration of the GNOME extension menu" width="320">
+</td>
+<td valign="top">
+The keyboard icon in the top bar opens this menu.
+<ul>
+<li>On/off toggle</li>
+<li>Brightness slider</li>
+<li>Color presets and R/G/B sliders</li>
+<li>Save and remove custom colors (click <code>+</code>, right-click to remove)</li>
+<li>Blink with adjustable rate and fade</li>
+<li>Smooth color transitions between presets</li>
+<li>Music sync: aubio tempo beats and a fixed palette (PipeWire/Pulse via <code>parec</code>; needs <code>python3-aubio</code>)</li>
+<li>Restores the last color and brightness on login (GSettings)</li>
+</ul>
+</td>
+</tr>
+</table>
 
 ## Manual sysfs
 
@@ -57,22 +78,23 @@ With the udev rule installed, `sudo` is not required for those writes.
 | Symptom | What to check |
 |---|---|
 | `No rgb:kbd_backlight` | `lsmod \| grep -E 'tuxedo\|clevo'`; `dmesg \| grep -Ei 'tuxedo\|clevo'` |
-| `Key was rejected by service` | Secure Boot MOK not enrolled — reboot and finish MOK Manager |
-| Extension says permission error | Re-run driver install (udev rule) or `sudo chmod 0666 /sys/class/leds/rgb:kbd_backlight/*` |
-| Color does not change | Driver loaded but EC ignored the command — open an issue with `dmesg` + `dmidecode -t system` |
+| `Key was rejected by service` | Secure Boot MOK not enrolled. Reboot and finish MOK Manager |
+| Extension says permission error | Re-run the driver install (udev rule), or `sudo chmod 0666 /sys/class/leds/rgb:kbd_backlight/*` |
+| Color does not change | Driver loaded but the EC ignored the command. Open an issue with `dmesg` and `dmidecode -t system` |
 
 ## Layout
 
-```
-extension/rgb-keyboard@avell/   GNOME Shell extension
-driver/patches/                 Avell DMI patch for tuxedo-drivers
-driver/udev/                    Non-root LED write permissions
-scripts/install-driver.sh       Build, sign, install modules
-scripts/after-reboot.sh         Load modules and apply a test color
-scripts/install-extension.sh    Install extension for current user
-scripts/test-leds.sh            Smoke-test sysfs
-```
+| Path | Role |
+|---|---|
+| `extension/rgb-keyboard@avell/` | GNOME Shell extension |
+| `driver/patches/` | Avell DMI patch for tuxedo-drivers |
+| `driver/udev/` | Non-root LED write permissions |
+| `scripts/install-driver.sh` | Build, sign, and install modules |
+| `scripts/after-reboot.sh` | Load modules and apply a test color |
+| `scripts/install-extension.sh` | Install the extension for the current user |
+| `scripts/test-leds.sh` | Smoke-test sysfs |
+| `docs/` | README artwork |
 
 ## Out of scope (v1)
 
-Per-zone colors, per-key RGB, fan/thermal control.
+Per-zone colors, per-key RGB, and fan/thermal control.
