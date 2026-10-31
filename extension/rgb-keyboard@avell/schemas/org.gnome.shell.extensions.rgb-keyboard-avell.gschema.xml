@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.rgb-keyboard-avell"
+          path="/org/gnome/shell/extensions/rgb-keyboard-avell/">
+    <key name="enabled" type="b">
+      <default>true</default>
+      <summary>Keyboard backlight on</summary>
+    </key>
+    <key name="brightness" type="i">
+      <default>128</default>
+      <range min="0" max="255"/>
+      <summary>Brightness</summary>
+    </key>
+    <key name="red" type="i">
+      <default>255</default>
+      <range min="0" max="255"/>
+      <summary>Red</summary>
+    </key>
+    <key name="green" type="i">
+      <default>255</default>
+      <range min="0" max="255"/>
+      <summary>Green</summary>
+    </key>
+    <key name="blue" type="i">
+      <default>255</default>
+      <range min="0" max="255"/>
+      <summary>Blue</summary>
+    </key>
+    <key name="saved-colors" type="as">
+      <default>[]</default>
+      <summary>Saved RGB colors as "r,g,b" strings</summary>
+    </key>
+    <key name="blink-enabled" type="b">
+      <default>false</default>
+      <summary>Blink keyboard backlight</summary>
+    </key>
+    <key name="blink-frequency" type="d">
+      <default>1.0</default>
+      <range min="0.2" max="8.0"/>
+      <summary>Blink frequency in Hz</summary>
+    </key>
+    <key name="blink-fade" type="d">
+      <default>0.55</default>
+      <range min="0.0" max="1.0"/>
+      <summary>Blink fade smoothness (0=hard on/off, 1=full sine)</summary>
+    </key>
+    <key name="audio-reactive" type="b">
+      <default>false</default>
+      <summary>React to system playback like a music visualizer</summary>
+    </key>
+  </schema>
+</schemalist>

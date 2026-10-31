@@ -1,0 +1,9 @@
+{
+  "uuid": "rgb-keyboard@avell",
+  "name": "Avell RGB Keyboard",
+  "description": "Control solid color and brightness of the Avell A50i (Clevo WMI) RGB keyboard.",
+  "shell-version": ["48", "49"],
+  "settings-schema": "org.gnome.shell.extensions.rgb-keyboard-avell",
+  "url": "https://github.com/emanueljusfy/rgb-keyboard",
+  "version": 7
+}

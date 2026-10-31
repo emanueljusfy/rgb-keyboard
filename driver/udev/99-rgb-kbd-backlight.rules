@@ -1,0 +1,4 @@
+# Allow the desktop user to control Clevo/Avell RGB keyboard LEDs without root.
+SUBSYSTEM=="leds", KERNEL=="rgb:kbd_backlight*", ACTION=="add|change", \
+  RUN+="/bin/chmod 0666 /sys/class/leds/%k/brightness", \
+  RUN+="/bin/chmod 0666 /sys/class/leds/%k/multi_intensity"

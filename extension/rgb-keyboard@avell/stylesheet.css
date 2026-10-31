@@ -1,0 +1,82 @@
+/* Match Slack/Mega panel footprint: 16px icon + tight horizontal padding */
+.rgb-keyboard-panel-button {
+    -natural-hpadding: 4px;
+    -minimum-hpadding: 4px;
+}
+
+.rgb-keyboard-panel-icon {
+    icon-size: 16px;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.rgb-keyboard-popup {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+}
+
+.rgb-keyboard-status-label {
+    width: 248px;
+}
+
+.rgb-keyboard-slider-row {
+    spacing: 12px;
+    padding: 4px 0;
+    width: 248px;
+}
+
+.rgb-keyboard-slider-label {
+    width: 72px;
+    min-width: 72px;
+    max-width: 72px;
+}
+
+.rgb-keyboard-presets,
+.rgb-keyboard-saved {
+    spacing: 8px;
+    padding: 6px 0;
+    width: 248px;
+}
+
+.rgb-keyboard-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+    border: 2px solid transparent;
+}
+
+.rgb-keyboard-swatch:hover,
+.rgb-keyboard-swatch:focus {
+    border-color: rgba(255, 255, 255, 0.85);
+}
+
+.rgb-keyboard-swatch-add {
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+    border: 2px dashed rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.rgb-keyboard-swatch-add:hover,
+.rgb-keyboard-swatch-add:focus {
+    border-color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
+}
+
+.rgb-keyboard-preview {
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    margin: 4px 0;
+    width: 248px;
+    height: 18px;
+}
+
+.rgb-keyboard-hint {
+    font-size: 0.85em;
+    opacity: 0.65;
+}
